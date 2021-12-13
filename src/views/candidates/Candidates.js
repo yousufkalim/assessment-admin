@@ -36,12 +36,12 @@ import {
   UncontrolledTooltip,
 } from "reactstrap";
 // core components
-import AddArticle from "./AddArticle";
-import EditArticle from "./EditArticle";
+import AddCandidate from "./AddCandidate";
+import EditCandidate from "./EditCandidate";
 import Header from "components/Headers/Header.js";
 import { toast } from "react-toastify";
 
-const Articles = () => {
+const Candidates = () => {
   const [openModal, setOpenModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
   const [blog, setBlog] = useState({});
@@ -266,14 +266,14 @@ const Articles = () => {
           </div>
         </Row>
         {openModal && (
-          <AddArticle
+          <AddCandidate
             openModal={openModal}
             handleModal={handleModal}
             getArticles={getArticles}
           />
         )}
         {editModal && (
-          <EditArticle
+          <EditCandidate
             openModal={editModal}
             handleModal={handleEditModal}
             blog={blog}
@@ -286,4 +286,4 @@ const Articles = () => {
   );
 };
 
-export default Articles;
+export default Candidates;

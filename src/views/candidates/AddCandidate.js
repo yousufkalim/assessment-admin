@@ -19,13 +19,9 @@ import {
 } from "reactstrap";
 // core components
 
-const EditArticle = ({
-  openModal,
-  handleModal,
-  blog,
-  setBlog,
-  getArticles,
-}) => {
+const AddCandidate = ({ openModal, handleModal, getArticles }) => {
+  let [blog, setBlog] = useState({ is_featured: false });
+
   const handleFileChange = (e) => {
     setBlog({ ...blog, blog_images: e.target.files[0] });
   };
@@ -46,9 +42,9 @@ const EditArticle = ({
       formData.append(property, blog[property]);
     }
 
-    api("put", `/blogs/${blog._id}`, formData)
+    api("post", "/blogs", formData)
       .then((res) => {
-        toast.success("Article updated successfully");
+        toast.success("Article added successfully");
         getArticles();
         handleModal();
       })
@@ -61,7 +57,7 @@ const EditArticle = ({
     <>
       <Modal isOpen={openModal} size="xl" centered>
         <ModalHeader charCode="Y" toggle={handleModal}>
-          Edit Article
+          Create Article
         </ModalHeader>
         <ModalBody>
           <Row>
@@ -191,8 +187,9 @@ const EditArticle = ({
         </ModalBody>
         <ModalFooter>
           <Button color="primary" onClick={handleSubmit}>
-            Publish
+            Save
           </Button>
+
           <Button onClick={handleModal}>Cancel</Button>
         </ModalFooter>
       </Modal>
@@ -200,4 +197,4 @@ const EditArticle = ({
   );
 };
 
-export default EditArticle;
+export default AddCandidate;

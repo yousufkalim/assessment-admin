@@ -16,7 +16,7 @@
 
 */
 import Index from "views/Index.js";
-import Articles from "views/articles/Articles";
+import Candidates from "views/candidates/Candidates";
 import Construction from "views/Construction";
 import Profile from "views/Profile.js";
 import Maps from "views/Maps.js";
@@ -34,10 +34,10 @@ var routes = [
     layout: "/admin",
   },
   {
-    path: "/articles",
-    name: "Articles",
-    icon: "ni ni-single-copy-04 text-red",
-    component: Articles,
+    path: "/candidates",
+    name: "Candidates",
+    icon: "ni ni-single-02 text-red",
+    component: Candidates,
     layout: "/admin",
   },
   {
