@@ -24,7 +24,7 @@ const EditCandidate = ({
   handleModal,
   blog,
   setBlog,
-  getArticles,
+  getCandidates,
 }) => {
   const handleFileChange = (e) => {
     setBlog({ ...blog, blog_images: e.target.files[0] });
@@ -49,7 +49,7 @@ const EditCandidate = ({
     api("put", `/blogs/${blog._id}`, formData)
       .then((res) => {
         toast.success("Article updated successfully");
-        getArticles();
+        getCandidates();
         handleModal();
       })
       .catch(() => {

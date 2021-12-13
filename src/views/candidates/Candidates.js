@@ -49,11 +49,11 @@ const Candidates = () => {
   const updateStore = UpdateStore();
 
   useEffect(() => {
-    getArticles();
+    getCandidates();
   }, []);
 
-  const getArticles = async () => {
-    const data = await api("get", "/blogs");
+  const getCandidates = async () => {
+    const data = await api("get", "/users");
 
     if (data) {
       updateStore({ articles: data });
@@ -75,7 +75,7 @@ const Candidates = () => {
     api("delete", `/blogs/${id}`)
       .then(() => {
         toast.success("Article deleted successfully");
-        getArticles();
+        getCandidates();
       })
       .catch(() => {
         toast.error("An error occurred while deleting");
@@ -108,8 +108,8 @@ const Candidates = () => {
               <Table className="align-items-center table-flush" responsive>
                 <thead className="thead-light">
                   <tr>
-                    <th scope="col">Title</th>
-                    <th scope="col">Description</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
                     <th scope="col">Status</th>
                     <th scope="col">Created At</th>
                     <th scope="col">Updated At</th>
@@ -269,7 +269,7 @@ const Candidates = () => {
           <AddCandidate
             openModal={openModal}
             handleModal={handleModal}
-            getArticles={getArticles}
+            getCandidates={getCandidates}
           />
         )}
         {editModal && (
@@ -278,7 +278,7 @@ const Candidates = () => {
             handleModal={handleEditModal}
             blog={blog}
             setBlog={setBlog}
-            getArticles={getArticles}
+            getCandidates={getCandidates}
           />
         )}
       </Container>

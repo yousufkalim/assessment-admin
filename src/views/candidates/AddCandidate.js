@@ -19,7 +19,7 @@ import {
 } from "reactstrap";
 // core components
 
-const AddCandidate = ({ openModal, handleModal, getArticles }) => {
+const AddCandidate = ({ openModal, handleModal, getCandidates }) => {
   let [blog, setBlog] = useState({ is_featured: false });
 
   const handleFileChange = (e) => {
@@ -45,7 +45,7 @@ const AddCandidate = ({ openModal, handleModal, getArticles }) => {
     api("post", "/blogs", formData)
       .then((res) => {
         toast.success("Article added successfully");
-        getArticles();
+        getCandidates();
         handleModal();
       })
       .catch(() => {
