@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import api from "../../api";
-import "antd/dist/antd.css";
 import { Select } from "antd";
 import {
   Modal,

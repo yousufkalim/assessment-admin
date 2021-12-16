@@ -35,6 +35,7 @@ import {
   Row,
   UncontrolledTooltip,
 } from "reactstrap";
+
 // core components
 import AddCandidate from "./AddCandidate";
 import EditCandidate from "./EditCandidate";
@@ -44,7 +45,7 @@ import { toast } from "react-toastify";
 const Candidates = () => {
   const [openModal, setOpenModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
-  const [blog, setBlog] = useState({});
+  const [candidate, setCandidate] = useState({});
   const { candidates } = Store();
   const updateStore = UpdateStore();
 
@@ -65,8 +66,8 @@ const Candidates = () => {
     return openModal;
   };
 
-  const handleEditModal = (article) => {
-    setBlog(article || blog);
+  const handleEditModal = (item) => {
+    setCandidate(item || candidate);
     setEditModal((open) => !open);
     return openModal;
   };
@@ -244,8 +245,8 @@ const Candidates = () => {
           <EditCandidate
             openModal={editModal}
             handleModal={handleEditModal}
-            blog={blog}
-            setBlog={setBlog}
+            candidate={candidate}
+            setCandidate={setCandidate}
             getCandidates={getCandidates}
           />
         )}

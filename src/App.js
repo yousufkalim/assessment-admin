@@ -19,6 +19,7 @@ import React from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { ToastContainer, Flip } from "react-toastify";
 
+import "antd/lib/select/style/css";
 import "assets/plugins/nucleo/css/nucleo.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "assets/scss/argon-dashboard-react.scss";
