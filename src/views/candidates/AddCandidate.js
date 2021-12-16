@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import { CKEditor } from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import MyUploadAdapter from "utils/MyUploadAdapter";
 import api from "../../api";
+import "antd/dist/antd.css";
+import { Select } from "antd";
 import {
   Modal,
   ModalBody,
@@ -19,45 +18,55 @@ import {
 } from "reactstrap";
 // core components
 
+const { Option } = Select;
+
 const AddCandidate = ({ openModal, handleModal, getCandidates }) => {
-  let [blog, setBlog] = useState({ is_featured: false });
-
-  const handleFileChange = (e) => {
-    setBlog({ ...blog, blog_images: e.target.files[0] });
-  };
-
-  const handleFeatured = () => {
-    setBlog({ ...blog, is_featured: !blog.is_featured });
-  };
+  let [candidate, setCandidate] = useState({ skills: ["HTML"] });
+  let [skills] = useState([
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "React",
+    "Node",
+    "Express",
+  ]);
 
   const handleInput = (e) => {
-    setBlog({ ...blog, [e.target.name]: e.target.value });
+    setCandidate({ ...candidate, [e.target.name]: e.target.value });
+  };
+
+  const handleSkillsInput = (value) => {
+    setCandidate({ ...candidate, skills: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = new FormData();
 
-    for (const property in blog) {
-      formData.append(property, blog[property]);
+    if (
+      !candidate.name ||
+      !candidate.email ||
+      !candidate.department ||
+      !candidate.skills
+    ) {
+      toast.error("All fields are required");
+    } else {
+      api("post", "/users", candidate)
+        .then((res) => {
+          toast.success("Candidate added successfully");
+          getCandidates();
+          handleModal();
+        })
+        .catch(() => {
+          toast.error("An error occurred");
+        });
     }
-
-    api("post", "/blogs", formData)
-      .then((res) => {
-        toast.success("Article added successfully");
-        getCandidates();
-        handleModal();
-      })
-      .catch(() => {
-        toast.error("An error occurred");
-      });
   };
 
   return (
     <>
       <Modal isOpen={openModal} size="xl" centered>
         <ModalHeader charCode="Y" toggle={handleModal}>
-          Create Article
+          Add a candidate
         </ModalHeader>
         <ModalBody>
           <Row>
@@ -67,19 +76,14 @@ const AddCandidate = ({ openModal, handleModal, getCandidates }) => {
                   <Row>
                     <Col lg="9" style={{ margin: "auto" }}>
                       <FormGroup>
-                        <label
-                          className="form-control-label"
-                          htmlFor="input-fname"
-                        >
-                          Title
-                        </label>
+                        <label className="form-control-label">Name</label>
                         <Input
                           className="form-control-alternative text-default"
                           required={true}
-                          placeholder="Enter tile here"
+                          placeholder="Enter candidate's name here"
                           type="text"
-                          value={blog.blog_title}
-                          name="blog_title"
+                          value={candidate.name}
+                          name="name"
                           onChange={handleInput}
                         />
                       </FormGroup>
@@ -88,95 +92,56 @@ const AddCandidate = ({ openModal, handleModal, getCandidates }) => {
                   <Row>
                     <Col lg="9" style={{ margin: "auto" }}>
                       <FormGroup>
-                        <label
-                          className="form-control-label"
-                          htmlFor="input-lname"
-                        >
-                          Description
-                        </label>
+                        <label className="form-control-label">Email</label>
                         <Input
                           className="form-control-alternative text-default"
-                          placeholder="Enter description here..."
-                          type="textarea"
-                          value={blog.blog_desc}
-                          name="blog_desc"
-                          rows="3"
+                          required={true}
+                          placeholder="Enter candidate's email here"
+                          type="email"
+                          value={candidate.email}
+                          name="email"
                           onChange={handleInput}
                         />
                       </FormGroup>
                     </Col>
                   </Row>
-                  {/* <div className="pl-lg-4"> */}
                   <Row>
                     <Col lg="9" style={{ margin: "auto" }}>
                       <FormGroup>
-                        <label
-                          className="form-control-label"
-                          htmlFor="input-image"
-                        >
-                          Featured image <i className="ni ni-album-2" />
-                        </label>
+                        <label className="form-control-label">Department</label>
                         <Input
-                          className="form-control-file form"
-                          id="input-image"
-                          type="file"
-                          onChange={handleFileChange}
-                        />
-                      </FormGroup>
-                    </Col>
-                  </Row>
-                  {/* </div> */}
-                  <Row>
-                    <Col lg="9" style={{ margin: "auto" }}>
-                      <FormGroup>
-                        <label
-                          className="form-control-label"
-                          htmlFor="input-lname"
+                          className="form-control-alternative text-default"
+                          required={true}
+                          type="select"
+                          value={candidate.department}
+                          name="department"
+                          onChange={handleInput}
                         >
-                          Article
-                        </label>
-                        <CKEditor
-                          editor={ClassicEditor}
-                          data={blog.blog_content}
-                          onReady={(editor) => {
-                            editor.plugins.get(
-                              "FileRepository"
-                            ).createUploadAdapter = (loader) => {
-                              return new MyUploadAdapter(loader);
-                            };
-                          }}
-                          onChange={(event, editor) => {
-                            const data = editor.getData();
-                            setBlog((prev) => {
-                              return {
-                                ...prev,
-                                blog_content: data,
-                              };
-                            });
-                          }}
-                        />
+                          <option value="">Select a department</option>
+                          <option value="MERN">MERN</option>
+                          <option value="RN">React Native</option>
+                          <option value="dotNET">.NET</option>
+                        </Input>
                       </FormGroup>
                     </Col>
                   </Row>
                   <Row>
                     <Col lg="9" style={{ margin: "auto" }}>
                       <FormGroup>
-                        <div className="custom-control custom-control-alternative custom-checkbox mb-3">
-                          <input
-                            className="custom-control-input"
-                            id="customCheck5"
-                            type="checkbox"
-                            value={blog.is_featured}
-                            checked={blog.is_featured}
-                            onChange={handleFeatured}
-                          />
-                          <label
-                            className="custom-control-label"
-                            htmlFor="customCheck5"
-                          >
-                            Featured
-                          </label>
-                        </div>
+                        <label className="form-control-label">Skills</label>
+                        <Select
+                          className="form-control-alternative text-default"
+                          mode="multiple"
+                          allowClear
+                          style={{ width: "100%" }}
+                          placeholder="Select candidate's skill"
+                          defaultValue={[skills[0]]}
+                          onChange={handleSkillsInput}
+                        >
+                          {skills.map((skill) => (
+                            <Option key={skill}>{skill}</Option>
+                          ))}
+                        </Select>
                       </FormGroup>
                     </Col>
                   </Row>

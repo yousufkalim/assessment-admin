@@ -101,7 +101,7 @@ const Candidates = () => {
                     size="md"
                   >
                     <i className="ni ni-fat-add"></i>
-                    Add Article
+                    Add Candidate
                   </Button>
                 </div>
               </CardHeader>
@@ -111,8 +111,8 @@ const Candidates = () => {
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Status</th>
+                    <th scope="col">Department</th>
                     <th scope="col">Created At</th>
-                    <th scope="col">Updated At</th>
                     <th scope="col" />
                   </tr>
                 </thead>
@@ -142,8 +142,8 @@ const Candidates = () => {
                             {item.test_conducted ? "Pending" : "Invited"}
                           </Badge>
                         </td>
+                        <td>{item.department}</td>
                         <td>{new Date(item.createdAt).toDateString()}</td>
-                        <td>{new Date(item.updatedAt).toDateString()}</td>
 
                         <td className="text-right">
                           <UncontrolledDropdown>
