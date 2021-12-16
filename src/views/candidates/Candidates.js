@@ -72,14 +72,10 @@ const Candidates = () => {
   };
 
   const handleDelete = (id) => {
-    api("delete", `/blogs/${id}`)
-      .then(() => {
-        toast.success("Article deleted successfully");
-        getCandidates();
-      })
-      .catch(() => {
-        toast.error("An error occurred while deleting");
-      });
+    api("delete", `/users/${id}`).then(() => {
+      toast.success("User deleted successfully");
+      getCandidates();
+    });
   };
 
   return (

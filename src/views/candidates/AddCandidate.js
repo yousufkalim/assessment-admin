@@ -50,15 +50,11 @@ const AddCandidate = ({ openModal, handleModal, getCandidates }) => {
     ) {
       toast.error("All fields are required");
     } else {
-      api("post", "/users", candidate)
-        .then((res) => {
-          toast.success("Candidate added successfully");
-          getCandidates();
-          handleModal();
-        })
-        .catch(() => {
-          toast.error("An error occurred");
-        });
+      api("post", "/users", candidate).then((res) => {
+        toast.success("Candidate added successfully");
+        getCandidates();
+        handleModal();
+      });
     }
   };
 
