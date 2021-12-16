@@ -45,7 +45,7 @@ const Candidates = () => {
   const [openModal, setOpenModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
   const [blog, setBlog] = useState({});
-  const { articles } = Store();
+  const { candidates } = Store();
   const updateStore = UpdateStore();
 
   useEffect(() => {
@@ -56,7 +56,7 @@ const Candidates = () => {
     const data = await api("get", "/users");
 
     if (data) {
-      updateStore({ articles: data });
+      updateStore({ candidates: data.users });
     }
   };
 
@@ -93,7 +93,7 @@ const Candidates = () => {
             <Card className="shadow">
               <CardHeader className="border-0">
                 <div className="d-flex justify-content-between ">
-                  <h3 className="mb-0">Articles</h3>
+                  <h3 className="mb-0">Candidates</h3>
                   <Button
                     color="primary"
                     href="#pablo"
@@ -117,49 +117,33 @@ const Candidates = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {articles.map((article) => {
+                  {candidates.map((item) => {
                     return (
                       <tr>
                         <th scope="row">
                           <Media className="align-items-center">
-                            <a
-                              className="avatar rounded-circle mr-3"
-                              href="#pablo"
-                              onClick={(e) => e.preventDefault()}
-                            >
-                              <img
-                                alt="Article"
-                                src={
-                                  process.env.REACT_APP_SERVER_MEDIA_URL +
-                                  article.blog_images
-                                }
-                              />
-                            </a>
                             <Media>
-                              <span
-                                className="mb-0 text-sm"
-                                title={article.blog_title}
-                              >
-                                {article.blog_title?.length > 30
-                                  ? article.blog_title?.substring(0, 30) + "..."
-                                  : article.blog_title}
+                              <span className="mb-0 text-sm" title={item.name}>
+                                {item.name?.length > 30
+                                  ? item.name?.substring(0, 30) + "..."
+                                  : item.name}
                               </span>
                             </Media>
                           </Media>
                         </th>
-                        <td title={article.blog_desc}>
-                          {article.blog_desc?.length > 30
-                            ? article.blog_desc?.substring(0, 30) + "..."
-                            : article.blog_desc}
+                        <td title={item.email}>
+                          {item.email?.length > 30
+                            ? item.email?.substring(0, 30) + "..."
+                            : item.email}
                         </td>
                         <td>
                           <Badge color="" className="badge-dot mr-4">
                             <i className="bg-success" />
-                            {article.status}
+                            {item.test_conducted ? "Pending" : "Invited"}
                           </Badge>
                         </td>
-                        <td>{new Date(article.createdAt).toDateString()}</td>
-                        <td>{new Date(article.updatedAt).toDateString()}</td>
+                        <td>{new Date(item.createdAt).toDateString()}</td>
+                        <td>{new Date(item.updatedAt).toDateString()}</td>
 
                         <td className="text-right">
                           <UncontrolledDropdown>
@@ -175,27 +159,15 @@ const Candidates = () => {
                             </DropdownToggle>
                             <DropdownMenu className="dropdown-menu-arrow" right>
                               <DropdownItem
-                                onClick={() =>
-                                  window
-                                    .open(
-                                      `https://passtotrip.com/blog/${article._id}`,
-                                      "_blank"
-                                    )
-                                    .focus()
-                                }
-                              >
-                                View
-                              </DropdownItem>
-                              <DropdownItem
                                 href="#pablo"
-                                onClick={() => handleEditModal(article)}
+                                onClick={() => handleEditModal(item)}
                               >
                                 Edit
                               </DropdownItem>
                               <DropdownItem
                                 href="#pablo"
                                 className="text-danger"
-                                onClick={() => handleDelete(article._id)}
+                                onClick={() => handleDelete(item._id)}
                               >
                                 Delete
                               </DropdownItem>
