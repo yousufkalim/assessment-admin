@@ -17,6 +17,7 @@
 */
 // reactstrap components
 import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import api from "api";
 import { Store, UpdateStore } from "StoreContext";
 import {
@@ -48,6 +49,7 @@ const Candidates = () => {
   const [candidate, setCandidate] = useState({});
   const { candidates } = Store();
   const updateStore = UpdateStore();
+  const history = useHistory();
 
   useEffect(() => {
     getCandidates();
@@ -155,6 +157,13 @@ const Candidates = () => {
                               <i className="fas fa-ellipsis-v" />
                             </DropdownToggle>
                             <DropdownMenu className="dropdown-menu-arrow" right>
+                              <DropdownItem
+                                onClick={() =>
+                                  history.push(`/admin/candidates/${item._id}`)
+                                }
+                              >
+                                View
+                              </DropdownItem>
                               <DropdownItem
                                 href="#pablo"
                                 onClick={() => handleEditModal(item)}

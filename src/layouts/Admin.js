@@ -25,6 +25,7 @@ import { Container } from "reactstrap";
 import AdminNavbar from "components/Navbars/AdminNavbar.js";
 import AdminFooter from "components/Footers/AdminFooter.js";
 import Sidebar from "components/Sidebar/Sidebar.js";
+import ViewCandidate from "views/candidates/ViewCandidate";
 
 import routes from "routes.js";
 
@@ -96,6 +97,11 @@ const Admin = (props) => {
         />
         <Switch>
           {getRoutes(routes)}
+          <Route
+            exact
+            path="/admin/candidates/:userId"
+            component={ViewCandidate}
+          />
           <Redirect from="*" to="/admin/index" />
         </Switch>
         <Container fluid>
