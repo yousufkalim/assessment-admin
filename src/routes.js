@@ -17,70 +17,35 @@
 */
 import Index from "views/Index.js";
 import Candidates from "views/candidates/Candidates";
-import Construction from "views/Construction";
-import Profile from "views/Profile.js";
-import Maps from "views/Maps.js";
-import Register from "views/Register.js";
-import Login from "views/Login.js";
-import Tables from "views/Tables.js";
-import Icons from "views/Icons.js";
 
 var routes = [
   {
     path: "/index",
     name: "Dashboard",
-    icon: "ni ni-tv-2 text-primary",
+    icon: "ni ni-tv-2 text-red",
     component: Index,
     layout: "/admin",
   },
   {
     path: "/candidates",
-    name: "Candidates",
-    icon: "ni ni-single-02 text-red",
+    name: "All Candidates",
+    icon: "ni ni-single-02 text-primary",
     component: Candidates,
     layout: "/admin",
   },
   {
-    path: "/admins",
-    name: "Admins",
-    icon: "ni ni-planet text-blue",
-    component: Construction,
-    layout: "/admin",
-  },
-  {
-    path: "/creators",
-    name: "Creators",
-    icon: "ni ni-pin-3 text-orange",
-    component: Construction,
-    layout: "/admin",
-  },
-  {
-    path: "/user-profile",
-    name: "User Profile",
+    path: "/invited-candidates",
+    name: "Invited Candidates",
     icon: "ni ni-single-02 text-yellow",
-    component: Construction,
+    component: Candidates,
     layout: "/admin",
   },
   {
-    path: "/users",
-    name: "Users",
-    icon: "ni ni-bullet-list-67 text-red",
-    component: Construction,
+    path: "/pending-candidates",
+    name: "Pending Candidates",
+    icon: "ni ni-single-02 text-green",
+    component: Candidates,
     layout: "/admin",
-  },
-  {
-    path: "/register",
-    name: "Register",
-    icon: "ni ni-key-25 text-info",
-    component: Register,
-    layout: "/auth",
-  },
-  {
-    path: "/login",
-    name: "Login",
-    icon: "ni ni-circle-08 text-pink",
-    component: Login,
-    layout: "/auth",
   },
 ];
 export default routes;

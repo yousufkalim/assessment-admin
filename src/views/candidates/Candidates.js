@@ -43,13 +43,14 @@ import EditCandidate from "./EditCandidate";
 import Header from "components/Headers/Header.js";
 import { toast } from "react-toastify";
 
-const Candidates = () => {
+const Candidates = ({ status }) => {
   const [openModal, setOpenModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
   const [candidate, setCandidate] = useState({});
   const { candidates } = Store();
   const updateStore = UpdateStore();
   const history = useHistory();
+  const { pathname } = window.location;
 
   useEffect(() => {
     getCandidates();
@@ -58,7 +59,15 @@ const Candidates = () => {
   const getCandidates = async () => {
     const data = await api("get", "/users");
 
-    if (data) {
+    if (pathname === "/admin/invited-candidates") {
+      updateStore({
+        candidates: data.users.filter((a) => a.test_conducted === false),
+      });
+    } else if (pathname === "/admin/pending-candidates") {
+      updateStore({
+        candidates: data.users.filter((a) => a.test_conducted === true),
+      });
+    } else {
       updateStore({ candidates: data.users });
     }
   };
@@ -157,13 +166,17 @@ const Candidates = () => {
                               <i className="fas fa-ellipsis-v" />
                             </DropdownToggle>
                             <DropdownMenu className="dropdown-menu-arrow" right>
-                              <DropdownItem
-                                onClick={() =>
-                                  history.push(`/admin/candidates/${item._id}`)
-                                }
-                              >
-                                View
-                              </DropdownItem>
+                              {item.test_conducted && (
+                                <DropdownItem
+                                  onClick={() =>
+                                    history.push(
+                                      `/admin/candidates/${item._id}`
+                                    )
+                                  }
+                                >
+                                  View
+                                </DropdownItem>
+                              )}
                               <DropdownItem
                                 href="#pablo"
                                 onClick={() => handleEditModal(item)}
