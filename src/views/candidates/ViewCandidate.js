@@ -1,5 +1,6 @@
 // reactstrap components
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import api from "api";
 import { Store, UpdateStore } from "StoreContext";
 import {
@@ -30,18 +31,15 @@ const ViewCandidate = () => {
   const [editModal, setEditModal] = useState(false);
   const [candidate, setCandidate] = useState({});
   const { candidates } = Store();
-  const updateStore = UpdateStore();
+  const { userId } = useParams();
 
   useEffect(() => {
     getCandidates();
   }, []);
 
   const getCandidates = async () => {
-    const data = await api("get", "/users");
-
-    if (data) {
-      updateStore({ candidates: data.users });
-    }
+    const data = await api("get", `/results/${userId}`);
+    setCandidate(data?.user);
   };
 
   const handleModal = () => {
@@ -73,93 +71,74 @@ const ViewCandidate = () => {
             <Card className="shadow">
               <CardHeader className="border-0">
                 <div className="d-flex justify-content-between ">
-                  <h3 className="mb-0">Candidates</h3>
-                  <Button
-                    color="primary"
-                    href="#pablo"
-                    onClick={handleModal}
-                    size="md"
-                  >
-                    <i className="ni ni-fat-add"></i>
-                    Add Candidate
-                  </Button>
+                  <h3 className="mb-0">Result</h3>
                 </div>
               </CardHeader>
               <Table className="align-items-center table-flush" responsive>
                 <thead className="thead-light">
                   <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Department</th>
-                    <th scope="col">Created At</th>
-                    <th scope="col" />
+                    <th scope="col">Technology</th>
+                    <th scope="col">Total Questions</th>
+                    <th scope="col">Correct</th>
+                    <th scope="col">Wrong</th>
+                    <th scope="col">Percentage</th>
+                    <th scope="col">Rank 0-10</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {candidates.map((item) => {
+                  {candidate?.result?.result_by_tech.map((tech) => {
                     return (
-                      <tr>
-                        <th scope="row">
-                          <Media className="align-items-center">
-                            <Media>
-                              <span className="mb-0 text-sm" title={item.name}>
-                                {item.name?.length > 30
-                                  ? item.name?.substring(0, 30) + "..."
-                                  : item.name}
-                              </span>
-                            </Media>
-                          </Media>
-                        </th>
-                        <td title={item.email}>
-                          {item.email?.length > 30
-                            ? item.email?.substring(0, 30) + "..."
-                            : item.email}
-                        </td>
-                        <td>
-                          <Badge color="" className="badge-dot mr-4">
-                            <i className="bg-success" />
-                            {item.test_conducted ? "Pending" : "Invited"}
-                          </Badge>
-                        </td>
-                        <td>{item.department}</td>
-                        <td>{new Date(item.createdAt).toDateString()}</td>
-
-                        <td className="text-right">
-                          <UncontrolledDropdown>
-                            <DropdownToggle
-                              className="btn-icon-only text-light"
-                              href="#pablo"
-                              role="button"
-                              size="sm"
-                              color=""
-                              onClick={(e) => e.preventDefault()}
-                            >
-                              <i className="fas fa-ellipsis-v" />
-                            </DropdownToggle>
-                            <DropdownMenu className="dropdown-menu-arrow" right>
-                              <DropdownItem href={`/candidates/${item._id}`}>
-                                View
-                              </DropdownItem>
-                              <DropdownItem
-                                href="#pablo"
-                                onClick={() => handleEditModal(item)}
-                              >
-                                Edit
-                              </DropdownItem>
-                              <DropdownItem
-                                href="#pablo"
-                                className="text-danger"
-                                onClick={() => handleDelete(item._id)}
-                              >
-                                Delete
-                              </DropdownItem>
-                            </DropdownMenu>
-                          </UncontrolledDropdown>
-                        </td>
+                      <tr key={tech.id}>
+                        <th>{tech.technology}</th>
+                        <td>{tech.total}</td>
+                        <td>{tech.correct}</td>
+                        <td>{tech.wrong}</td>
+                        <td>{tech.percentage}</td>
+                        <td>{tech.rank}</td>
                       </tr>
                     );
                   })}
+                  <tr>
+                    <th>Overall</th>
+                    <td>{candidate?.result?.total}</td>
+                    <td>{candidate?.result?.total_correct}</td>
+                    <td>{candidate?.result?.total_wrong}</td>
+                    <td>{candidate?.result?.overall_percentage}</td>
+                    <td>{candidate?.result?.overall_rank}</td>
+                  </tr>
+                </tbody>
+              </Table>
+              <Table className="align-items-center table-flush" responsive>
+                <thead className="thead-light">
+                  <tr>
+                    <th scope="col">Technology</th>
+                    <th scope="col">Question</th>
+                    <th scope="col">Answer</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {candidate?.result?.questionnaire.map((data) => (
+                    <tr
+                      key={data.id}
+                      style={{
+                        backgroundColor: data.answer.correct
+                          ? "rgba(46, 160, 67, 0.15)"
+                          : "rgba(248, 81, 73, 0.15)",
+                      }}
+                    >
+                      <th>{data.technology}</th>
+                      <td title={data.question.question}>
+                        {data.question.question.length > 60
+                          ? data.question.question.substring(0, 60) + "..."
+                          : data.question.question}
+                      </td>
+                      <td title={data.answer.answer}>
+                        {data.answer.answer.length > 60
+                          ? data.answer.answer.substring(0, 60) + "..."
+                          : data.answer.answer}
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </Table>
 
@@ -220,22 +199,6 @@ const ViewCandidate = () => {
             </Card>
           </div>
         </Row>
-        {openModal && (
-          <AddCandidate
-            openModal={openModal}
-            handleModal={handleModal}
-            getCandidates={getCandidates}
-          />
-        )}
-        {editModal && (
-          <EditCandidate
-            openModal={editModal}
-            handleModal={handleEditModal}
-            candidate={candidate}
-            setCandidate={setCandidate}
-            getCandidates={getCandidates}
-          />
-        )}
       </Container>
     </>
   );

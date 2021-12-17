@@ -56,6 +56,7 @@ const Admin = (props) => {
       if (prop.layout === "/admin" && loggedIn) {
         return (
           <Route
+            exact
             path={prop.layout + prop.path}
             component={prop.component}
             key={key}
