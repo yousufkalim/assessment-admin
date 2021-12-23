@@ -17,6 +17,8 @@
 */
 import Index from "views/Index.js";
 import Candidates from "views/candidates/Candidates";
+import Register from "views/Register.js";
+import Login from "views/Login.js";
 
 var routes = [
   {
@@ -46,6 +48,20 @@ var routes = [
     icon: "ni ni-single-02 text-green",
     component: Candidates,
     layout: "/admin",
+  },
+  {
+    path: "/register",
+    name: "Register",
+    icon: "ni ni-key-25 text-info",
+    component: Register,
+    layout: "/auth",
+  },
+  {
+    path: "/login",
+    name: "Login",
+    icon: "ni ni-circle-08 text-pink",
+    component: Login,
+    layout: "/auth",
   },
 ];
 export default routes;
