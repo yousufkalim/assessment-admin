@@ -1,0 +1,359 @@
+.mainuserform {
+  min-height: 90vh !important;
+}
+.stepperMain {
+  width: 50%;
+  margin: auto;
+}
+.stepper {
+  justify-content: center !important;
+  background: none !important;
+}
+.dummyGrid {
+  text-align: center !important;
+  margin-top: 3% !important;
+}
+.dummyimg {
+  height: 80% !important;
+  margin: 25px auto auto 20% !important;
+}
+.dummyimgforuserform {
+  height: 100% !important;
+
+  margin: 10px auto auto 20% !important;
+  margin-left: 20px !important;
+}
+.dummyimgforQuestion {
+  height: 100% !important;
+
+  margin: 10px auto auto 20% !important;
+  margin-left: 20px !important;
+}
+.dummyimgforResult {
+  height: 100% !important;
+
+  margin: 10px auto auto 20% !important;
+  margin-left: 20px !important;
+}
+.dummyimgQuestion {
+  height: 75%;
+  margin: auto auto auto 20%;
+}
+.dummyimgResult {
+  height: 75%;
+  margin: 40px auto auto 20%;
+}
+
+.userform {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+}
+.userForm {
+  padding: 30px;
+}
+.userformgrid {
+  color: white !important;
+  background: #343747 !important;
+  width: 78% !important;
+  padding: 0 0 10px 10px !important;
+  margin: 40px auto !important;
+  border-radius: 18px !important;
+  /* box-shadow: 0px 1px 0px 13px rgb(0 0 0 / 12%) !important; */
+  box-shadow: 0px 1px 0px 13px rgb(72 68 68 / 10%) !important;
+}
+.formheading {
+  font-size: 28px;
+  text-align: center;
+  margin: 22px 0px 10px 0px;
+  padding: 10px;
+}
+.inputGrid {
+  margin: 18px 0 0 0 !important;
+  text-align: center !important;
+}
+.inputField {
+  border: none;
+  background: #242635;
+  color: #9198a5;
+  font-size: 15px;
+  border-radius: 10px;
+  padding: 0 0 0 20px;
+  width: 85%;
+  height: 45px;
+  margin: 2px;
+}
+.inputField:focus {
+  outline: none;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+::placeholder {
+  color: #858b96;
+  opacity: 0.4;
+}
+/* for date picker */
+.react-datepicker {
+  background-color: #242635 !important;
+  color: white !important ;
+}
+.react-datepicker__header {
+  background: #242635 !important;
+  color: white !important;
+}
+.react-datepicker__day {
+  color: white !important;
+}
+.react-datepicker__day:hover {
+  color: #242635 !important;
+}
+.react-datepicker__current-month {
+  color: white !important;
+}
+.react-datepicker__day-name {
+  color: white !important;
+}
+.react-datepicker__day-name {
+  color: white !important;
+}
+/* for selelect education level field options */
+.MuiPopover-paper {
+  background: #242635 !important;
+  color: white !important;
+}
+.MuiMenuItem-root:hover {
+  background: #9198a5 !important ;
+}
+
+.selectformControl {
+  border: none !important;
+  background: #242635 !important;
+  color: #9198a5 !important;
+  font-size: 15px !important;
+  border-radius: 10px !important;
+  padding: 0 0 0 0px !important;
+  width: 92% !important;
+  height: 45px !important;
+  margin: 3px 13px 13px 13px !important;
+}
+.selectforeducation {
+  height: 45px;
+}
+/* address icon */
+.MuiAutocomplete-popupIndicator {
+  display: none !important;
+}
+.MuiSelect-outlined.MuiSelect-outlined {
+  text-align: left !important;
+}
+/* education level placeholder */
+.MuiInputLabel-outlined {
+  color: #9198a5 !important;
+  opacity: 0.5;
+  margin: -5px 0 0 0 !important;
+}
+.MuiOutlinedInput-notchedOutline {
+  border: none !important;
+}
+/* education level icon */
+.MuiSelect-iconOutlined {
+  color: #727170 !important; /*arrow*/
+}
+/* education level on focus */
+.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border: 1px solid white !important;
+  color: #9198a5 !important; /*na*/
+}
+/* education level text color */
+.MuiSelect-outlined.MuiSelect-outlined {
+  color: #9198a5 !important;
+}
+/* address field */
+/* .MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon */
+.MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] {
+  height: 45px !important;
+  background: #242635 !important;
+  border-radius: 10px !important;
+}
+.MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"]
+  .MuiAutocomplete-input:first-child {
+  color: #9198a5 !important;
+  padding: 0 0 2px 5px !important;
+}
+.termsandconditionGrid {
+  margin: -5px 0 6px 10px !important;
+}
+.termsandcondition {
+  color: #9198a5;
+  margin: 10px 0 0 0px;
+}
+/* .note {
+  color: #9198a5;
+  text-align: left;
+  font-size: 12px;
+}
+.sk {
+  color: #9198a5;
+} */
+.formbuttonsGrid {
+  text-align: center !important;
+}
+.arrowleft {
+  position: relative;
+  right: 10px;
+  top: 4px;
+}
+.formbackbutton {
+  background: linear-gradient(180deg, #ffffff -24.17%, #bac0d6 100%);
+  border-radius: 100px;
+  width: 57%;
+  text-align: center;
+  color: black;
+  margin: 20px 20px 20px 20px;
+  padding: 13px 0px 13px 0px;
+  cursor: pointer;
+}
+.formbackbutton:hover {
+  background: linear-gradient(1deg, #ffffff -24.17%, #bac0d6 100%);
+}
+.formSubmitButton {
+  background: linear-gradient(
+    265.05deg,
+    #fece24 0%,
+    #ff6d1a 50.66%,
+    #ff29aa 101.84%
+  );
+  cursor: pointer;
+  border: none;
+  border-radius: 100px;
+  /* width: 55%; */
+  text-align: center;
+  color: white;
+  margin: 20px 20px 20px 10px;
+  padding: 20px 20px 20px 15px;
+}
+.formSubmitButton:hover {
+  background: linear-gradient(
+    147deg,
+    #f1c31c 0%,
+    #f56410 50.66%,
+    #ec58b1 101.84%
+  );
+}
+.circulardiv {
+  padding: 0px 48px 0px px;
+}
+
+/* for big screens */
+@media only screen and (min-device-width: 1500px) and (max-device-width: 1900px) {
+  .mainuserform {
+    min-height: 80vh !important;
+  }
+  .dummyGrid {
+    margin-top: 2% !important;
+  }
+  .dummyimg {
+    height: 75% !important;
+    margin: auto auto auto 30%;
+  }
+  .dummyimgQuestion {
+    height: 57% !important;
+    margin: 40px auto auto 30%;
+  }
+  .dummyimgResult {
+    height: 50% !important;
+    margin: 20px auto auto 30%;
+  }
+  .formheading {
+    font-weight: 500;
+    font-size: 32px;
+
+    margin: 22px 0px 10px 0px;
+    padding: 10px;
+  }
+  /* .selectformControl {
+    width: 87% !important;
+  } */
+  /* education level placeholder */
+  .MuiInputLabel-outlined {
+    margin: 0px 0 0 0 !important;
+  }
+  .termsandconditionGrid {
+    margin: -5px 0 8px 20px !important;
+  }
+  .formbackbutton {
+    margin: 20px 20px 20px 35px;
+  }
+  .formSubmitButton {
+    margin: 20px 20px 20px 70px !important;
+    font-size: 15px !important;
+    padding: 15px 25px 15px 25px !important;
+  }
+}
+
+/* for mbile */
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 812px) {
+  * {
+    /* overflow-x: hidden;  */
+    width: auto;
+  }
+  .stepperMain {
+    width: 100%;
+  }
+  .br {
+    display: none;
+  }
+  .formheading {
+    font-size: 17px;
+    text-align: center;
+    margin: 10px;
+    padding: 10px;
+  }
+  .inputGrid {
+    margin: 4px 0 4px 0 !important;
+    text-align: center !important;
+  }
+  .inputgrid1 {
+    margin-bottom: 8px !important;
+  }
+  .dummyGrid {
+    text-align: center !important;
+    /* margin-top: 6% !important; */
+  }
+  .dummyimg {
+    height: auto;
+    margin-left: 25px !important;
+  }
+  .responsiveform {
+    margin-top: -28% !important;
+  }
+
+  .selectformControl {
+    margin: 15px 0px 0px 0 !important;
+  }
+  .mainuserform {
+    height: auto;
+  }
+  .termsandconditionGrid {
+    margin: 6px 0 15px 10px !important;
+  }
+  .termsandcondition {
+    width: 80%;
+    font-size: 14px;
+  }
+  .formbuttonsGrid {
+    text-align: center !important;
+    margin-top: 20px !important;
+  }
+  .formbackbutton {
+    width: 80%;
+    margin: 0px auto 0px auto;
+  }
+  .formSubmitButton {
+    width: 80%;
+  }
+  .steplabel {
+    display: none;
+  }
+}

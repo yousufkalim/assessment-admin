@@ -1,0 +1,226 @@
+.main {
+  /* background: radial-gradient(
+    97.47% 66.83% at 50% 50%,
+    #35384e 0%,
+    #000000 100%
+  ) !important; */
+  text-align: center;
+}
+.mainbody {
+  /* background: radial-gradient(
+    97.47% 66.83% at 50% 50%,
+    #35384e 0%,
+    #000000 100%
+  ) !important; */
+  color: white;
+}
+.bodyimg {
+  height: 75vh;
+  width: 75%;
+}
+
+.body-rectangle {
+  color: white !important;
+  background: #343747 !important;
+  width: 65% !important;
+  height: 140px !important;
+  margin: auto !important;
+  position: relative !important;
+  /* top: 5px; */
+  bottom: 35px !important;
+  border-radius: 18px !important;
+  /* box-shadow: 0px 1px 0px 13px rgb(72 68 68 / 10%) !important; */
+  box-shadow: 0px 1px 0px 13px rgb(0 0 0 / 12%) !important;
+}
+.grid1 {
+  background: #c4c4c4;
+  height: 70px;
+  margin: 20px 0 0 0;
+  width: 70%;
+}
+.body-rectangleGrid1 {
+  padding: 12px 3px 0 25px !important;
+}
+.body-rectangleGrid2 {
+  padding: 18px 0 0 40px !important;
+}
+.partiButton {
+  border: none;
+  margin: 30px 0px 0px -20px;
+  border-radius: 100px;
+  padding: 25px 60px 25px 26px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 900;
+  background: linear-gradient(
+    265.05deg,
+    #fece24 0%,
+    #ff6d1a 50.66%,
+    #ff29aa 101.84%
+  );
+}
+.partiButton:hover {
+  /* margin: 29px 0px 0px 0px;
+  font-size: 15px; */
+  background: linear-gradient(
+    147deg,
+    #f1c31c 0%,
+    #f56410 50.66%,
+    #ec58b1 101.84%
+  );
+}
+.arrowright {
+  position: relative;
+  top: 4px;
+  right: 49px;
+}
+
+.h2 {
+  color: #ffffff;
+}
+.h3 {
+  font-size: 30px;
+  text-align: left;
+  margin: 10px 0px 0px 0px;
+}
+.h4 {
+  color: #ffffff;
+  margin: 10px 0px 0px 0px;
+}
+.p1 {
+  font-size: 12px;
+  text-align: left;
+  color: #9198a5;
+}
+.p2 {
+  font-size: 8px;
+  text-align: center;
+  color: #9198a5;
+}
+.p3 {
+  font-size: 15px;
+  text-align: center;
+  color: #9198a5;
+}
+.vidoSection {
+  padding: 0 10px 10px 0;
+
+  margin: 2% 0 0 2%;
+}
+.videImage {
+  padding-left: 3%;
+  width: 60%;
+}
+.footerGrid {
+  width: 60% !important;
+  margin: auto !important;
+  padding: 20px 20px 30px 20px !important;
+}
+.footerimg {
+  width: 28%;
+}
+.formobile {
+  display: none;
+}
+.formobileBodyImg {
+  display: none;
+}
+.forweb {
+  display: inherit;
+  margin: auto;
+}
+
+/* for mobile */
+@media only screen and (min-device-width: 320px) and (max-device-width: 812px) {
+  .bodyimg {
+    height: auto;
+    width: auto;
+  }
+  .body-rectangleGrid2 {
+    padding: 25px 15px 0 15px !important;
+  }
+  .mainbody {
+    overflow-x: hidden;
+  }
+  .forweb {
+    display: none;
+  }
+  .formobile {
+    display: inherit;
+    height: auto;
+    margin: auto;
+  }
+  .formobileBodyImg {
+    display: inherit;
+    height: 62vh;
+    margin: auto;
+  }
+
+  .body-rectangle {
+    width: 90% !important;
+    height: 30vh !important;
+    bottom: 99px !important;
+  }
+  .grid1 {
+    margin: auto;
+    width: 25%;
+  }
+  .h3 {
+    font-size: 23px;
+    text-align: center;
+    margin: 0px;
+  }
+  .p1 {
+    font-size: 12px;
+    text-align: center;
+  }
+  .partiButton {
+    border: none;
+    margin: 0px;
+    padding: 15px 37% 15px 38% !important;
+  }
+  .arrowright {
+    right: -19%;
+    top: -45%;
+  }
+  .vidoSection {
+    margin: -80px 0 0 0;
+  }
+  .videImage {
+    width: 90%;
+  }
+  .footerGrid {
+    width: 75% !important;
+  }
+}
+
+/* for big screens */
+@media only screen and (min-device-width: 1500px) and (max-device-width: 1900px) {
+  .body-rectangle {
+    width: 65% !important;
+    height: 138px !important;
+    bottom: 138px !important;
+  }
+  .arrowright {
+    position: relative;
+    left: -40px;
+    top: 3px;
+  }
+  .h3 {
+    font-size: 35px;
+    text-align: left;
+    margin: 10px 0px 0px 0px;
+  }
+  .p1 {
+    font-size: 13px;
+  }
+  .partiButton {
+    border: none;
+    margin: 26px 0px 0px 0px;
+    font-size: 20px;
+    border-radius: 100px;
+    padding: 20px 51px 22px 30px;
+    font-weight: 100;
+  }
+}

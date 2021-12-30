@@ -1,0 +1,29 @@
+/* Importing all CSS files */
+@import url("./header.css");
+@import url("./Body.css");
+@import url("./userform.css");
+@import url("./Question.css");
+@import url("./result.css");
+@import url("./dialog.css");
+@import url("./login.css");
+@import url("./footer.css");
+@import url("./cgu.css");
+@import url("./CircleTimer.css");
+@import url("./QuestionsTimer.css");
+@import url("./CheckResult.css");
+
+body {
+  font-family: "lato", sans-serif !important;
+  overflow-x: hidden;
+  background: radial-gradient(
+    97.47% 66.83% at 50% 50%,
+    #35384e 0%,
+    #000000 100%
+  ) !important;
+}
+
+.home-root {
+  font-family: "lato", sans-serif !important;
+  font-weight: inherit !important;
+  font-style: normal !important;
+}

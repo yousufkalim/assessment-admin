@@ -1,0 +1,16 @@
+.timerwrapper {
+  display: flex;
+  align-items: center;
+}
+
+.timeer {
+  /* padding: 0 0 0 150px; */
+  display: inline;
+  position: absolute;
+  right: 100px;
+  bottom: 52px;
+  text-align: center !important;
+  margin-right: 10%;
+  font-family: "Montserrat";
+  white-space: nowrap;
+}
