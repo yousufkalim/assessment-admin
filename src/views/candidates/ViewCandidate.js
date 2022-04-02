@@ -18,6 +18,9 @@ import {
   Container,
   Row,
   UncontrolledTooltip,
+  FormGroup,
+  Input,
+  Col,
 } from "reactstrap";
 
 // core components
@@ -66,6 +69,275 @@ const ViewCandidate = () => {
       {/* Page content */}
       <Container className="mt--7" fluid>
         {/* Table */}
+        <Row className="mb-4">
+          <div className="col">
+            <Card className="shadow">
+              <CardHeader className="border-1">
+                <div className="d-flex justify-content-between ">
+                  <h3 className="mb-0">Performa</h3>
+                </div>
+              </CardHeader>
+              <Row>
+                <Col>
+                  <div className="pl-lg-4 pr-4 pt-4">
+                    <Row>
+                      <Col lg="4" style={{ margin: "auto" }}>
+                        <FormGroup>
+                          <label className="form-control-label">Name</label>
+                          <Input
+                            className="form-control-alternative text-default"
+                            type="text"
+                            value={candidate.name || "N/A"}
+                            disabled
+                          />
+                        </FormGroup>
+                      </Col>
+                      <Col lg="4" style={{ margin: "auto" }}>
+                        <FormGroup>
+                          <label className="form-control-label">
+                            Phone Number
+                          </label>
+                          <Input
+                            className="form-control-alternative text-default"
+                            type="text"
+                            value={candidate.contact_no || "N/A"}
+                            disabled
+                          />
+                        </FormGroup>
+                      </Col>
+                      <Col lg="4" style={{ margin: "auto" }}>
+                        <FormGroup>
+                          <label className="form-control-label">Email</label>
+                          <Input
+                            className="form-control-alternative text-default"
+                            type="text"
+                            value={candidate.email || "N/A"}
+                            disabled
+                          />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col lg="4" style={{ margin: "auto" }}>
+                        <FormGroup>
+                          <label className="form-control-label">
+                            Vacancy Source
+                          </label>
+                          <Input
+                            className="form-control-alternative text-default"
+                            type="text"
+                            value={candidate.vacancy_source || "N/A"}
+                            disabled
+                          />
+                        </FormGroup>
+                      </Col>
+                      <Col lg="4" style={{ margin: "auto" }}>
+                        <FormGroup>
+                          <label className="form-control-label">
+                            Date of Birth
+                          </label>
+                          <Input
+                            className="form-control-alternative text-default"
+                            type="text"
+                            value={
+                              candidate.dob
+                                ? new Date(candidate.dob).toDateString()
+                                : "N/A"
+                            }
+                            disabled
+                          />
+                        </FormGroup>
+                      </Col>
+                      <Col lg="4" style={{ margin: "auto" }}>
+                        <FormGroup>
+                          <label className="form-control-label">
+                            Religious Sect
+                          </label>
+                          <Input
+                            className="form-control-alternative text-default"
+                            type="text"
+                            value={candidate.sect || "N/A"}
+                            disabled
+                          />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col lg="4" style={{ margin: "auto" }}>
+                        <FormGroup>
+                          <label className="form-control-label">
+                            Marital Status
+                          </label>
+                          <Input
+                            className="form-control-alternative text-default"
+                            type="text"
+                            value={candidate.marital_status || "N/A"}
+                            disabled
+                          />
+                        </FormGroup>
+                      </Col>
+                      <Col lg="8" style={{ margin: "auto" }}>
+                        <FormGroup>
+                          <label className="form-control-label">Address</label>
+                          <Input
+                            className="form-control-alternative text-default"
+                            type="text"
+                            value={candidate.address || "N/A"}
+                            disabled
+                          />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col lg="4" style={{ margin: "auto" }}>
+                        <FormGroup>
+                          <label className="form-control-label">
+                            Applying for the post
+                          </label>
+                          <Input
+                            className="form-control-alternative text-default"
+                            type="text"
+                            value={candidate.post || "N/A"}
+                            disabled
+                          />
+                        </FormGroup>
+                      </Col>
+                      <Col lg="4" style={{ margin: "auto" }}>
+                        <FormGroup>
+                          <label className="form-control-label">
+                            Total Experience
+                          </label>
+                          <Input
+                            className="form-control-alternative text-default"
+                            type="text"
+                            value={candidate.total_experience || "N/A"}
+                            disabled
+                          />
+                        </FormGroup>
+                      </Col>
+                      <Col lg="4" style={{ margin: "auto" }}>
+                        <FormGroup>
+                          <label className="form-control-label">
+                            Experience related to the post
+                          </label>
+                          <Input
+                            className="form-control-alternative text-default"
+                            type="text"
+                            value={candidate.post_experience || "N/A"}
+                            disabled
+                          />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col lg="4" style={{ margin: "auto" }}>
+                        <FormGroup>
+                          <label className="form-control-label">
+                            Expected date of joining
+                          </label>
+                          <Input
+                            className="form-control-alternative text-default"
+                            type="text"
+                            value={
+                              candidate.joining_time
+                                ? new Date(
+                                    candidate.joining_time
+                                  ).toDateString()
+                                : "N/A"
+                            }
+                            disabled
+                          />
+                        </FormGroup>
+                      </Col>
+                      <Col lg="4" style={{ margin: "auto" }}>
+                        <FormGroup>
+                          <label className="form-control-label">
+                            Current Employer
+                          </label>
+                          <Input
+                            className="form-control-alternative text-default"
+                            type="text"
+                            value={candidate.current_employer || "N/A"}
+                            disabled
+                          />
+                        </FormGroup>
+                      </Col>
+                      <Col lg="4" style={{ margin: "auto" }}>
+                        <FormGroup>
+                          <label className="form-control-label">
+                            Test submitted at
+                          </label>
+                          <Input
+                            className="form-control-alternative text-default"
+                            type="text"
+                            value={new Date(
+                              candidate.updatedAt
+                            ).toLocaleString()}
+                            disabled
+                          />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col lg="4" style={{ margin: "auto" }}>
+                        <FormGroup>
+                          <label className="form-control-label">
+                            Current Salary
+                          </label>
+                          <Input
+                            className="form-control-alternative text-default"
+                            type="text"
+                            value={candidate.current_salary || "N/A"}
+                            disabled
+                          />
+                        </FormGroup>
+                      </Col>
+                      <Col lg="4" style={{ margin: "auto" }}>
+                        <FormGroup>
+                          <label className="form-control-label">
+                            Expected Salary
+                          </label>
+                          <Input
+                            className="form-control-alternative text-default"
+                            type="text"
+                            value={candidate.expected_salary || "N/A"}
+                            disabled
+                          />
+                        </FormGroup>
+                      </Col>
+                      <Col lg="4" style={{ margin: "auto" }}>
+                        <FormGroup>
+                          <label className="form-control-label">Skills</label>
+                          <Input
+                            className="form-control-alternative text-default"
+                            type="text"
+                            value={candidate.skills?.join(", ") || "N/A"}
+                            disabled
+                          />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col lg="12" style={{ margin: "auto" }}>
+                        <FormGroup>
+                          <label className="form-control-label">
+                            Leaving reason
+                          </label>
+                          <Input
+                            className="form-control-alternative text-default"
+                            type="text"
+                            value={candidate.leaving_reason || "N/A"}
+                            disabled
+                          />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                  </div>
+                </Col>
+              </Row>
+            </Card>
+          </div>
+        </Row>
         <Row>
           <div className="col">
             <Card className="shadow">
