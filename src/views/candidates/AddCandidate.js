@@ -27,6 +27,8 @@ const AddCandidate = ({ openModal, handleModal, getCandidates }) => {
     "JavaScript",
     "React",
     "Node",
+    "RN",
+    "dotNET",
     "Express",
   ]);
 
